@@ -1,14 +1,55 @@
 # hack-for-sabnzbd-on-weird-platforms
 
-... with weird platforms: Platforms like RISC-V where not all python3 packages are there pre-built, and building them from source would require Rust (`Rust not found, installing into a temporary directory`).
+... with weird platforms: Platforms like RISC-V where not all python3 packages are there pre-built
 
 Only needed if run SABnzbd from source.
+
+## All cases
 
 Prepare
 ```
 sudo apt install python3-dev # for building sabctools
 sudo apt install libffi-dev # for building cffi
 ```
+
+## rustc available
+
+If rustc and cargo are available for your paltform, install them and build normally.
+
+For example, on Ubuntu (even on RISC-V):
+
+```
+sudo apt install rustc cargo -y
+```
+Installation will take 400 MB disk space.
+
+After that, install the python packages (if needed, some will be compiled with the c compiler, other with rustc).
+
+If that fails, for example because of too old rustc / cargo, go to the next paragraph.
+
+
+## No rustc available
+
+Copy requirements.txt to requirements-no-rust.txt, and in requirements-no-rust.txt
+
+- set cryptography to 3.3.2
+- comment out orjson
+
+```
+$ diff requirements.txt requirements-no-rust.txt
+38c38
+< cryptography>=3.0
+---
+> cryptography==3.3.2
+43c43
+< orjson==3.11.8; python_version > '3.9'
+---
+> #orjson==3.11.8; python_version > '3.9'
+```
+
+
+## Brute force
+
 
 Comment out some things:
 
