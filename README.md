@@ -69,15 +69,7 @@ venv/bin/python3 SABnzbd.py
 
 ## Errors you might see without the above changes
 
-```
-~/git/sabnzbd$ venv/bin/python3 -m pip install -r requirements.txt -U
-Ignoring pywin32: markers 'sys_platform == "win32"' don't match your environment
-Ignoring windows-toasts: markers 'sys_platform == "win32"' don't match your environment
-Ignoring winrt-runtime: markers 'sys_platform == "win32"' don't match your environment
-Ignoring winrt-Windows.Data.Xml.Dom: markers 'sys_platform == "win32"' don't match your environment
-Ignoring winrt-Windows.Foundation: markers 'sys_platform == "win32"' don't match your environment
-Ignoring winrt-Windows.Foundation.Collections: markers 'sys_platform == "win32"' don't match your environment
-```
+
 
 ```
 Collecting cryptography>=3.0 (from -r requirements.txt (line 38))
@@ -132,5 +124,18 @@ error: subprocess-exited-with-error
 ╰─> See above for output.
 
 note: This error originates from a subprocess, and is likely not a problem with pip.
+```
+or
+
+```
+            error: failed to parse manifest at `/tmp/pip-install-wtpqe33v/maturin_79d3c58523db4cd7b8e823c543e6b602/Cargo.toml`
+
+            Caused by:
+              feature `edition2024` is required
+
+              The package requires the Cargo feature called `edition2024`, but that feature is not stabilized in this version of Cargo (1.75.0).
+              Consider adding `cargo-features = ["edition2024"]` to the top of Cargo.toml (above the [package] table) to tell Cargo you are opting in to use this unstable feature.
+              See https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#edition-2024 for more information about the status of this feature.
+            error: `cargo metadata --manifest-path Cargo.toml --format-version 1 --locked` failed with code 101
 ```
 
