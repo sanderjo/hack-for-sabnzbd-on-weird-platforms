@@ -59,11 +59,15 @@ sed -i '/cryptography/s/^\([[:space:]]*\)/\1# /' SABnzbd.py
 sed -i.bak -E '/^(cryptography|ujson|orjson)/s/^/# /' requirements.txt
 ```
 
+## Installing packages and running SABnzbd
+
 Install required python3 packages, and run SABnzbd:
 ```
-venv/bin/python3 -m pip install -r requirements.txt -U
-venv/bin/python3 SABnzbd.p
+venv/bin/python3 -m pip install -r <name-of-correct-requirements-file> -U
+venv/bin/python3 SABnzbd.py
 ```
+
+## Errors you might see without the above changes
 
 ```
 ~/git/sabnzbd$ venv/bin/python3 -m pip install -r requirements.txt -U
